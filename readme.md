@@ -7,10 +7,10 @@ ros install myaosato/simple-tokenizer
 WIP
 
 ```
-(register :regex "a" :type 'a)
-(register :regex "b" :type 'b)
-(register :regex "\\s+" :type 'ws :ignore-p t)
-
-(tokenizer "a  b")
+(defvar tokenizer 
+  (make-tokenizer '((:regex "a" :type 'a)
+                    (:regex "b" :type 'b)
+                    (:regex "\\s+" :type 'ws :ignore-p t))))
+(funcall tokenizer "a  b")
 => (#S(TOKEN :str "a" :type 'a) #S(TOKEN :str "b" :type 'b))
 ```
