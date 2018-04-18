@@ -1,5 +1,5 @@
-(uiop/package:define-package :simple-tokenizer/simple-tokenizer (:nicknames)
-                             (:use :cl) (:shadow)
+(uiop/package:define-package :simple-tokenizer/simple-tokenizer
+                             (:nicknames :s-tokenizer) (:use :cl) (:shadow)
                              (:import-from :cl-ppcre :scan)
                              (:export :def-tokenizer) (:intern))
 (in-package :simple-tokenizer/simple-tokenizer)
