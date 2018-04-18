@@ -1,7 +1,7 @@
 (uiop/package:define-package :simple-tokenizer/simple-tokenizer (:nicknames)
                              (:use :cl) (:shadow)
                              (:import-from :cl-ppcre :scan)
-                             (:export :make-tokenizer) (:intern))
+                             (:export :def-tokenizer) (:intern))
 (in-package :simple-tokenizer/simple-tokenizer)
 ;;don't edit above
 
@@ -73,3 +73,8 @@
             token-getters))
     (lambda (target) (tokenizer target 0 nil (reverse token-getters)))))
   
+(defmacro def-tokenizer (symbol &rest specifiers)
+  `(progn 
+     (setf (symbol-function (intern (string ',symbol)))
+           (,'make-tokenizer ',specifiers))
+     ',symbol))
